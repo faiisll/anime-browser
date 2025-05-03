@@ -11,6 +11,7 @@ import FilterContainer from '../components/Filter/FilterContainer';
 import FilterBar from '../components/Filter/FilterBar';
 import BottomSheet from '../components/BottomSheet/BottomSheet';
 import EmptySearch from '../components/Empty/EmptySearch';
+import { useNavigate } from 'react-router';
 
 const HomePage = () => {
     const [typing, setTyping] = useState(false)
@@ -25,6 +26,7 @@ const HomePage = () => {
     const [isFirstMount, setIsFirstMount] = useState(true);
     const [filter, setFilter] = useState({status: '', type:''});
     const [showMobileFilter, setShowMobileFilter] = useState(false)
+    const navigate = useNavigate()
 
     const fetchData = () => {
         setLoading(true)
@@ -80,6 +82,12 @@ const HomePage = () => {
         exit: { opacity: 0, y: -30, transition: { duration: 0.3 } },
     };
 
+    const navigateDetail = (id = "", name = "") => {
+        let nameUrl = name.replace(/\s+/g, '_');
+        nameUrl = nameUrl.replace(/[^a-zA-Z0-9_:\-]/g, '');
+        navigate(`/anime/${id}/${nameUrl}`)
+    }
+
     return (
         <>
             <div className='flex md:hidden'>
@@ -93,7 +101,7 @@ const HomePage = () => {
             </div>
             <div className='w-full flex flex-col gap-10 relative'>
                 <div className={clsx('w-full bg-white border-b border-gray-200 py-4 flex justify-center items-center px-2 fixed z-40')}>
-                    <div className='w-full xl:px-36 2xl:px-60 lg:px-20'>
+                    <div className='w-full xl:px-36 2xl:px-60 lg:px-20 px-4'>
                         <SearchBar disabled={loading} loading={typing || loading} placeholder="Search anime title" onInput={setSearch} value={search} />
                     </div>
 
@@ -101,7 +109,7 @@ const HomePage = () => {
 
                 
 
-                <div className='w-full xl:px-36 2xl:px-60 lg:px-20 flex flex-col gap-4 pb-4 px-4 pt-24'>
+                <div className='w-full xl:px-36 2xl:px-60 lg:px-20 flex flex-col px-4 gap-4 pb-4 pt-24'>
 
                     {/* Mobile filter button */}
                     <div className='w-full flex justify-end md:hidden'>
@@ -126,8 +134,8 @@ const HomePage = () => {
                         <div className='grow min-h-[500px] relative'>
                             {/* <FullLoader show={loading} /> */}
 
-                            {!data.length && <EmptySearch />}
-                            <motion.div 
+                            {!data.length && !loading && <EmptySearch />}
+                            <motion.div
                             key={page} // Key to reset animation on refetch
                             initial="initial"
                             animate="animate"
@@ -137,12 +145,14 @@ const HomePage = () => {
                                 
                                 {data.map((anime, index) => (
                                     <motion.div
+                                    layout
                                     key={(index + 1) * page}
                                     initial={{ opacity: 0, scale: 0.8 }}
                                     animate={{ opacity: 1 ,scale: 1 }}
-                                    transition={{ delay: index * 0.1, duration: 0.08 }}
+                                    transition={{ delay: index * 0.1, duration: 0.08, type:'spring', damping: 20, stiffness:300 }}
                                     >
                                         <AnimeCard key={(index+1)*page}
+                                        onClick={() => {navigateDetail(anime.mal_id, anime.title)}}
                                         title={anime.title}
                                         image={anime?.images?.webp?.image_url} 
                                         type={anime?.type}

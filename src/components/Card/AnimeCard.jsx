@@ -6,9 +6,9 @@ const Tag = ({children}) => {
         {children}
     </div>
 }
-const AnimeCard = ({title = "", image = "", type = "", status=""}) => {
+const AnimeCard = ({title = "", image = "", type = "", status="", ...props}) => {
     return (
-        <div className='w-full max-w-full aspect-3/5 border border-gray-200 rounded-lg p-2 bg-white flex flex-col gap-4'>
+        <div {...props} className='w-full max-w-full aspect-3/5 border border-gray-200 rounded-lg p-2 bg-white flex flex-col gap-4'>
             <div className='aspect-4/5 rounded-lg w-full bg-gray-200'>
                 <img src={image} className='object-cover w-full h-full' />
             </div>
