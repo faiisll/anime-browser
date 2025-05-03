@@ -9,8 +9,8 @@ const statusOptions = [
         value: ""
     },
     {
-        label: "Completed",
-        value: "completed"
+        label: "Complete",
+        value: "complete"
     },
     {
         label: "Airing",
