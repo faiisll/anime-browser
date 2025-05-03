@@ -44,7 +44,7 @@ const types = [
         value: "special"
     },
 ]
-const FilterBar = ({onChange = () => {}, value={status: '', type:''}}) => {
+const FilterBar = ({onChange = () => {}, value={status: '', type:''}, shadow="shadow-xl"}) => {
     const [status, setStatus] = useState("")
     const [type, setType] = useState("")
     const [firstMount, setFirstMount] = useState(true)
@@ -74,7 +74,7 @@ const FilterBar = ({onChange = () => {}, value={status: '', type:''}}) => {
         }
     }, [status, type])
     return (
-        <FilterContainer>
+        <FilterContainer shadow={shadow}>
             <Collapse title='Status' defaultValue={true}>
                 <FilterRadios options={statusOptions} value={status} onChange={(e) => {setStatus(e)}} />
             </Collapse>
