@@ -110,7 +110,12 @@ const HomePage = () => {
                                 animate={{ opacity: 1 ,scale: 1 }}
                                 transition={{ delay: index * 0.1, duration: 0.08 }}
                                 >
-                                    <AnimeCard key={(index+1)*page} title={anime.title} image={anime?.images?.webp?.image_url} />
+                                    <AnimeCard key={(index+1)*page}
+                                    title={anime.title}
+                                    image={anime?.images?.webp?.image_url} 
+                                    type={anime?.type}
+                                    status={anime?.status}
+                                    />
 
                                 </motion.div>
                             ))}
