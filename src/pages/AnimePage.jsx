@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useMemo, useState } from 'react';
 import AnimeStat from '../components/Stat/AnimeStat';
 import { useNavigate, useParams } from 'react-router';
@@ -45,10 +47,10 @@ const AnimePage = () => {
         }
     }, [id])
     return (
-        <div className='w-screen h-screen xl:px-36 2xl:px-60 lg:px-20 px-4 flex items-center'>
-            <div className='min-h-[600px] grow shadow-xl w-full bg-white rounded-xl flex flex-col py-10 px-20 relative'>
-                <div className='flex gap-10 grow'>
-                    <div className='min-w-[200px] max-w-[200px] min-h-full rounded-lg overflow-hidden flex flex-col justify-between'>
+        <div className='w-screen min-h-screen xl:px-36 2xl:px-60 lg:px-20 px-4 flex items-center'>
+            <div className='grow shadow-xl w-full bg-white rounded-xl flex flex-col py-10 px-4 md:px-20 relative'>
+                <div className='flex flex-col md:flex-row gap-2 md:gap-10 grow'>
+                    <div className='min-w-[200px] max-w-[200px] gap-4 min-h-full rounded-lg overflow-hidden flex flex-col justify-between'>
                         {loading && !data ? <div className='w-full animate-pulse bg-gray-200'></div> :
                         <img src={data?.images?.webp?.large_image_url} className='object-cover w-full rounded-lg' />}
 
@@ -61,7 +63,7 @@ const AnimePage = () => {
                         </div>
                     </div>
                     <div className='flex flex-col grow gap-4'>
-                        {!loading && data ? <h2 className='text-3xl'>{data.title}</h2> : 
+                        {!loading && data ? <h2 className='text-3xl text-center sm:text-left'>{data.title}</h2> : 
                         <div className='w-md h-10 animate-pulse bg-gray-200 rounded'></div>
                         }
                         
