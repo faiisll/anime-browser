@@ -32,7 +32,9 @@ const HomePage = () => {
     const fetchData = () => {
         setLoading(true)
         axios.get('https://api.jikan.moe/v4/anime', {params: {limit, page, q: search, ...filter}}).then(res => {
-            if(res.data.data) setData([...res.data.data])
+            if(res.data.data) {
+                setData([...res.data.data])
+            }
             if(res.data.pagination) mappingPagination(res.data.pagination)
         }).catch(err => {
 
@@ -100,16 +102,16 @@ const HomePage = () => {
                 </BottomSheet>
 
             </div>
-            <div className='w-full flex flex-col gap-10 relative'>
-                <div className={clsx('w-full bg-white dark:bg-gray-950 dark:border-b-0 border-b border-gray-200 py-4 flex justify-center items-center px-2 fixed z-40')}>
-                    <div className='w-full xl:px-36 2xl:px-60 lg:px-20 px-4 flex gap-2'>
-                        <div className='grow'>
-                            <SearchBar disabled={loading} loading={typing || loading} placeholder="Search anime title" onInput={setSearch} value={search} />
-                        </div>
-                        <ToggleDark />
+            <div className={clsx('w-full bg-white dark:bg-gray-950 dark:border-b-0 border-b border-gray-200 py-4 flex px-2 fixed z-40')}>
+                <div className='w-full xl:px-36 2xl:px-60 lg:px-20 px-4 flex gap-2'>
+                    <div className='grow'>
+                        <SearchBar disabled={loading} loading={typing || loading} placeholder="Search anime title" onInput={setSearch} value={search} />
                     </div>
-
+                    <ToggleDark />
                 </div>
+
+            </div>
+            <div className='w-full flex flex-col gap-10 relative'>
 
                 
 
@@ -140,7 +142,7 @@ const HomePage = () => {
 
                             {!data.length && !loading && <EmptySearch />}
                             <motion.div
-                            key={page} // Key to reset animation on refetch
+                            key={page+debouncedSearch+filter.status+filter.type} // Key to reset animation on refetch
                             initial="initial"
                             animate="animate"
                             exit="exit"

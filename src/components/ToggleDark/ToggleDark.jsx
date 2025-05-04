@@ -11,7 +11,7 @@ export default function ToggleDark() {
         transition: {type: 'spring'}
     }
     return (
-        <div onClick={toggleDarkMode} className='transition-all w-10 h-10 border border-gray-200 rounded-lg cursor-pointer flex items-center justify-center text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 dark:border-0 overflow-hidden'>
+        <div onClick={toggleDarkMode} className='transition-all min-w-10 h-10 aspect-square border border-gray-200 rounded-lg cursor-pointer flex items-center justify-center text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 dark:border-0 overflow-hidden'>
             <AnimatePresence  mode="wait">
                 {isDarkMode ?
                 <motion.svg
