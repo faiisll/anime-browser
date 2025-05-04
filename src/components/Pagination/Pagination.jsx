@@ -4,7 +4,12 @@ import React, { useState } from 'react';
 
 const PaginationNumber = ({children = "1", isActive = false, ...props}) => {
     return (
-        <div {...props} className={clsx('px-3 py-1 w-fit rounded-lg transition-all', isActive &&  'bg-blue-500 text-white', !isActive && !props.disabled ? 'hover:bg-blue-500 hover:text-white cursor-pointer' : 'cursor-not-allowed')}>{children}</div>
+        <div {...props} className={
+            clsx(
+                'px-3 py-1 w-fit rounded-lg transition-all',
+                isActive &&  'bg-blue-500 text-white',
+                !isActive && !props.disabled ? 'hover:bg-blue-500 hover:text-white cursor-pointer text-gray-800 dark:text-gray-300' : 'text-gray-500 cursor-not-allowed'
+            )}>{children}</div>
     )
 }
 
@@ -19,7 +24,7 @@ const PaginationListNumber = ({lastPage = 7, page, setPage = () => {}, ...props}
     <div className='flex gap-1'>
         <div className='hidden sm:flex gap-1'>
             {lastPage >= 7 && page + 4 > lastPage && <PaginationNumber {...props} onClick={() => {handlePage(1)}}>{1}</PaginationNumber>}
-            {lastPage >= 7 && page + 4 > lastPage && <div className='px-3 py-1 w-fit'>...</div>}
+            {lastPage >= 7 && page + 4 > lastPage && <div className='px-3 py-1 w-fit text-gray-800 dark:text-gray-300'>...</div>}
             {lastPage > 2 && page > lastPage-1 && <PaginationNumber {...props} onClick={() => {handlePage(page-2)}}>{page-2}</PaginationNumber>}
             {lastPage > 2 && (page > lastPage-2 || (page>= 2 && page <= 3)) && <PaginationNumber {...props} onClick={() => {handlePage(page-1)}}>{page-1}</PaginationNumber>}
         </div>
@@ -27,7 +32,7 @@ const PaginationListNumber = ({lastPage = 7, page, setPage = () => {}, ...props}
         <div className='hidden sm:flex gap-1'>
             {page < lastPage && <PaginationNumber {...props} onClick={() => {handlePage(page+1)}}>{page+1}</PaginationNumber>}
             {page+1 < lastPage && <PaginationNumber {...props} onClick={() => {handlePage(page+2)}}>{page+2}</PaginationNumber>}
-            {lastPage >= 7 && page+3 < lastPage && <div className='px-3 py-1 w-fit'>...</div>}
+            {lastPage >= 7 && page+3 < lastPage && <div className='px-3 py-1 w-fit text-gray-800 dark:text-gray-300'>...</div>}
             {lastPage >= 7 && page+2 <lastPage && <PaginationNumber {...props} onClick={() => {handlePage(lastPage)}}>{lastPage}</PaginationNumber>}
         </div>
         
@@ -38,7 +43,7 @@ const PaginationListNumber = ({lastPage = 7, page, setPage = () => {}, ...props}
 }
 
 const PaginationButton = ({children, disabled = false, ...props}) => {
-    return (<div {...props} className={clsx('px-3 py-1 w-fit rounded-lg transition-all flex justify-center items-center', !disabled && 'hover:bg-blue-500 hover:text-white cursor-pointer', disabled && 'text-gray-500 cursor-not-allowed')}>{children}</div>)
+    return (<div {...props} className={clsx('px-3 py-1 w-fit rounded-lg transition-all flex justify-center items-center', !disabled && 'hover:bg-blue-500 hover:text-white cursor-pointer dark:text-gray-300', disabled && 'text-gray-500 cursor-not-allowed')}>{children}</div>)
 }
 
 const Pagination = ({disabled = false, lastPage = 7, limit = 10, total= 990, page = 1, setPage = (e) => {}}) => {
@@ -55,7 +60,7 @@ const Pagination = ({disabled = false, lastPage = 7, limit = 10, total= 990, pag
         }
     }
     return (
-        <div className='w-full flex bg-white shadow-lg lg:px-12 px-2 py-4 rounded-lg items-center'>
+        <div className='w-full flex bg-white dark:bg-gray-950 shadow-lg lg:px-12 px-2 py-4 rounded-lg items-center'>
             
             <div className='grow'>
                 <div className='w-full flex gap-2'>
@@ -84,7 +89,7 @@ const Pagination = ({disabled = false, lastPage = 7, limit = 10, total= 990, pag
                     </PaginationButton>}
                 </div>
             </div>
-            <span className='text-sm text-gray-800'>{total > 0 ? `${((limit*(page-1))+1)}-${limit*page} of ${total} results` : 'No result'}</span>
+            <span className='text-sm text-gray-800 dark:text-gray-300'>{total > 0 ? `${((limit*(page-1))+1)}-${limit*page} of ${total} results` : 'No result'}</span>
         </div>
     );
 }

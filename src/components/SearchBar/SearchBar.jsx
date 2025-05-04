@@ -17,9 +17,9 @@ const SearchBar = ({value, onInput = (val) => {}, placeholder = "", loading = fa
 
 
     return (
-        <div onClick={focusInput} tabIndex="0" className='peer focus-within:outline-2 focus-within:outline-blue-500 w-full border flex bg-gray-50 rounded-lg overflow-hidden pl-4 items-center gap-2 border-gray-200'>
-            <input placeholder={placeholder} value={value} onInput={(e) => {onInput(e.target.value)}} ref={inputRef} className='grow outline-none text-gray-700' />
-            <div onClick={clearInput} tabIndex="0" className='w-12 h-10 bg-white flex justify-center items-center border-l border-gray-200'>
+        <div onClick={focusInput} tabIndex="0" className='peer transition-colors focus-within:outline-2 focus-within:outline-blue-500 w-full border dark:border-0 flex bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden pl-4 items-center gap-2 border-gray-200'>
+            <input placeholder={placeholder} value={value} onInput={(e) => {onInput(e.target.value)}} ref={inputRef} className='grow outline-none text-gray-700 dark:placeholder:text-gray-600 dark:text-gray-300' />
+            <div onClick={clearInput} tabIndex="0" className='w-12 h-10 bg-white dark:bg-gray-800 flex justify-center items-center border-l dark:border-0 border-gray-200 dark:text-gray-300'>
                 {!value && !loading && <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                 </svg>} 

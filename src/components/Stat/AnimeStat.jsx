@@ -37,7 +37,7 @@ const Score = ({score = 5}) => {
 const AnimeStat = ({data, loading = true}) => {
     return (
         loading || !data ? <StatSkeleton /> :
-        <div className='flex gap-8 flex-col sm:flex-row'>
+        <div className='flex gap-8 flex-col sm:flex-row text-gray-800 dark:text-gray-300'>
             <div className='flex flex-col items-center px-8 sm:border-r border-gray-300'>
                 <span className='text-sm'>Score</span>
                 <Score score={data.score}/>
@@ -50,13 +50,13 @@ const AnimeStat = ({data, loading = true}) => {
             
             <div className='flex flex-col grow justify-around gap-4 sm:gap-1'>
                 <div className='flex gap-8 text-lg'>
-                    <h3>
+                    <h3 className='font-light'>
                         Ranked <span className='font-semibold'>#{data.rank}</span>
                     </h3>
-                    <h3>
+                    <h3 className='font-light'>
                         Popularity <span className='font-semibold'>#{data.popularity}</span>
                     </h3>
-                    <h3>
+                    <h3 className='font-light'>
                         Members <span className='font-semibold'>{data.members}</span>
                     </h3>
                 </div>

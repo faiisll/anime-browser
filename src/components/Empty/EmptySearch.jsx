@@ -11,8 +11,8 @@ const EmptySearch = () => {
                 </div>
 
                 <div className='flex flex-col items-center'>
-                    <h5 className='text-xl'>No result found</h5>
-                    <p className='text-xs text-gray-400'>Try adjust your search or filter to find you're looking for.</p>
+                    <h5 className='text-xl text-gray-800 dark:text-gray-300'>No result found</h5>
+                    <p className='text-xs text-gray-400 dark:text-gray-700'>Try adjust your search or filter to find you're looking for.</p>
                 </div>
             </div>
         </div>

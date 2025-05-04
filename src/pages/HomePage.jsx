@@ -12,6 +12,7 @@ import FilterBar from '../components/Filter/FilterBar';
 import BottomSheet from '../components/BottomSheet/BottomSheet';
 import EmptySearch from '../components/Empty/EmptySearch';
 import { useNavigate } from 'react-router';
+import ToggleDark from '../components/ToggleDark/ToggleDark';
 
 const HomePage = () => {
     const [typing, setTyping] = useState(false)
@@ -100,9 +101,12 @@ const HomePage = () => {
 
             </div>
             <div className='w-full flex flex-col gap-10 relative'>
-                <div className={clsx('w-full bg-white border-b border-gray-200 py-4 flex justify-center items-center px-2 fixed z-40')}>
-                    <div className='w-full xl:px-36 2xl:px-60 lg:px-20 px-4'>
-                        <SearchBar disabled={loading} loading={typing || loading} placeholder="Search anime title" onInput={setSearch} value={search} />
+                <div className={clsx('w-full bg-white dark:bg-gray-950 dark:border-b-0 border-b border-gray-200 py-4 flex justify-center items-center px-2 fixed z-40')}>
+                    <div className='w-full xl:px-36 2xl:px-60 lg:px-20 px-4 flex gap-2'>
+                        <div className='grow'>
+                            <SearchBar disabled={loading} loading={typing || loading} placeholder="Search anime title" onInput={setSearch} value={search} />
+                        </div>
+                        <ToggleDark />
                     </div>
 
                 </div>
@@ -111,15 +115,15 @@ const HomePage = () => {
 
                 <div className='w-full xl:px-36 2xl:px-60 lg:px-20 flex flex-col px-4 gap-4 pb-4 pt-24'>
 
-                    {/* Mobile filter button */}
+                    {/* Mobile filter trigger button */}
                     <div className='w-full flex justify-end md:hidden'>
                         <div
                         onClick={() => {setShowMobileFilter(true)}}
-                        className='flex items-center gap-2 bg-white shadow-lg rounded-lg p-1 cursor-pointer'>
+                        className='flex items-center gap-2 bg-white dark:bg-gray-950 dark:text-gray-300 shadow-lg rounded-lg p-2 cursor-pointer'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                                 <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
                             </svg>
-                            <h4 className='font-medium text-gray-800'>FILTER</h4>
+                            <h4 className='font-medium text-gray-800 dark:text-gray-300'>FILTER</h4>
 
                         </div>
                     </div>

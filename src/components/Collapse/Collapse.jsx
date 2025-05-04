@@ -9,7 +9,7 @@ const Collapse = ({title = "", defaultValue= false, children}) => {
     }, [])
     return (
         <div className='w-full mt-2'>
-            <div className='flex justify-between py-2 cursor-pointer' onClick={() => { setShow(!show)}}>
+            <div className='flex justify-between py-2 cursor-pointer text-gray-800 dark:text-gray-300' onClick={() => { setShow(!show)}}>
                 <h5 className='text-sm'>{title}</h5>
                 <motion.div
                 animate={{

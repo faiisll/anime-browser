@@ -82,7 +82,7 @@ const FilterBar = ({onChange = () => {}, value={status: '', type:''}, shadow="sh
                 <FilterRadios options={types} value={type} onChange={(e) => {setType(e)}} />
             </Collapse>
             
-            {clearable && <div onClick={clearFilter} className='w-full bg-rose-500 rounded-lg cursor-pointer text-white text-center py-1 mt-4 hover:bg-rose-600 transition-colors'>
+            {clearable && <div onClick={clearFilter} className='w-full text-sm bg-rose-500 rounded-lg cursor-pointer text-white text-center py-1 mt-4 hover:bg-rose-600 transition-colors'>
                 Clear
             </div>}
         </FilterContainer>

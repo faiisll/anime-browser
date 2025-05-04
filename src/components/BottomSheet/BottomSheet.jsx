@@ -28,7 +28,7 @@ const BottomSheet = ({show = false, changeShow = () => {}, children}) => {
                         transition={{ duration: 0.1 }}/>
 
                         <motion.div
-                        className="h-2/3 w-full bg-white bottom-0 absolute rounded-t-xl"
+                        className="h-2/3 w-full bg-white dark:bg-gray-950 bottom-0 absolute rounded-t-xl"
                         initial={{ y: '100%' }}
                         animate={{ y: '0%' }}
                         exit={{ y: '100%' }}
