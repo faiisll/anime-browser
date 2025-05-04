@@ -2,6 +2,7 @@ import { Routes as RoutesRR, Route, useLocation } from "react-router";
 import HomePage from "../pages/HomePage";
 import AnimePage from "../pages/AnimePage";
 import { motion, AnimatePresence } from 'motion/react';
+import PageNotFound from "../pages/PageNotFound";
 
 const AnimateWrapper = ({children}) => {
     return <motion.div
@@ -22,6 +23,7 @@ const Routes = () => {
             <RoutesRR location={location} key={location.pathname}>
                 <Route path="/" element={<AnimateWrapper><HomePage /></AnimateWrapper>}></Route>
                 <Route path="/anime/:id/:name" element={<AnimateWrapper><AnimePage /></AnimateWrapper>}></Route>
+                <Route path="*" element={<PageNotFound />} />
             </RoutesRR>
 
         </AnimatePresence>

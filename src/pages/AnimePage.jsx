@@ -20,6 +20,7 @@ const AnimePage = () => {
                 setData(res.data.data)
             }
         }).catch(err => {
+            navigate("/404", {replace: true})
             console.log(res);
         }).finally(() => {
             setLoading(false)
